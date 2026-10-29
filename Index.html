@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darood Ibrahim - Recitation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #1b5e20; }
+        .card {
+            background: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: left;
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        button {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 15px 0;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #1b5e20; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Darood Ibrahim</h1>
+    <p>Tap below to listen to the recitation 3 times:</p>
+    
+    <button onclick="reciteThreeTimes()">▶ Play Recitation (3x)</button>
+
+    <div class="card">
+        <strong>Recitation 1:</strong><br>
+        <span class="text">Allahumma salli 'ala Muhammadin wa 'ala ali Muhammadin, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammadin, kama barakta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid.</span>
+    </div>
+
+    <div class="card">
+        <strong>Recitation 2:</strong><br>
+        <span class="text">Allahumma salli 'ala Muhammadin wa 'ala ali Muhammadin, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammadin, kama barakta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid.</span>
+    </div>
+
+    <div class="card">
+        <strong>Recitation 3:</strong><br>
+        <span class="text">Allahumma salli 'ala Muhammadin wa 'ala ali Muhammadin, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammadin, kama barakta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid.</span>
+    </div>
+</div>
+
+<script>
+    function reciteThreeTimes() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); // Stop any active speech
+            
+            const text = "Allahumma salli 'ala Muhammadin wa 'ala ali Muhammadin, kama sallayta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid. Allahumma barik 'ala Muhammadin wa 'ala ali Muhammadin, kama barakta 'ala Ibrahima wa 'ala ali Ibrahima, innaka Hamidun Majid.";
+            
+            for (let i = 1; i <= 3; i++) {
+                let utterance = new SpeechSynthesisUtterance(`Recitation ${i}. ` + text);
+                utterance.rate = 0.85; // Natural speaking pace
+                window.speechSynthesis.speak(utterance);
+            }
+        } else {
+            alert("Sorry, your browser does not support audio speech synthesis.");
+        }
+    }
+</script>
+
+</body>
+</html>
